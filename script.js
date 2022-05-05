@@ -14,6 +14,44 @@ function createSketch(num) {
 		for (let i = 0; i < num; i++) {
 			div.appendChild(document.createElement("div"));
 		}
+  }
+  colorSketch()
+}
+
+// Event listener for color change
+function colorSketch() {
+	child = document.querySelectorAll(".container div div");
+	child.forEach((div) => {
+		div.addEventListener("mouseover", changeColor);
+	});
+}
+
+// Change the color randomly
+function changeColor(e) {
+	x = Math.floor(Math.random() * 255) + 1;
+	y = Math.floor(Math.random() * 255) + 1;
+	z = Math.floor(Math.random() * 255) + 1;
+
+	bColor = e.target.style.backgroundColor;
+
+	if (bColor.includes("rgb")) {
+    e.target.style.backgroundColor = "";
+
+		split = bColor
+			.substring(4, bColor.length - 1)
+			.replace(/ /g, "")
+      .split(",");
+
+		r = parseInt(split[0]);
+		g = parseInt(split[1]);
+		b = parseInt(split[2]);
+
+    // Subtract form the number till it gets to 0. 225/10 = 22.5
+		e.target.style.backgroundColor = `rgb(${Math.floor(r - 22.5)}, ${Math.floor(
+			g - 22.5
+		)}, ${Math.floor(b - 22.5)})`;
+	} else {
+		e.target.style.backgroundColor = `rgb(${x}, ${y}, ${z})`;
 	}
 }
 
