@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
+:root{
+  --edge-curve: 1rem;
+}
+
 html{
   box-sizing: border-box;
   font-size: 62.5%;
@@ -36,3 +40,53 @@ body{
   -ms-border-radius: 1rem;
   -o-border-radius: 1rem;
 }
+
+.info{
+  text-align: center;
+  margin-bottom: .5rem;
+}
+.container{
+  margin: 0 auto;
+  width: 50rem;
+  height: 50rem;
+}
+.container div:first-child div:first-child{
+  border-top-left-radius: var(--edge-curve);
+}
+.container div:first-child div:last-child{
+  border-top-right-radius: var(--edge-curve);
+}
+.container div:last-child div:last-child{
+  border-bottom-right-radius: var(--edge-curve);
+}
+.container div:last-child div:first-child{
+  border-bottom-left-radius: var(--edge-curve);
+}
+
+/* With Flex */
+.container{
+  display: flex;
+  flex-direction: column;
+}
+.container div{
+  display: flex;
+  flex: auto;
+}
+.container div div{
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* With Grid */
+/* .container{
+  display: grid;
+}
+.container div{
+  display: grid;
+  grid-auto-flow: column;
+}
+.container div div{
+  border: 1px solid #777;
+  background-color: #fff;
+}
+*/
