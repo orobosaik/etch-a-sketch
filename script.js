@@ -55,4 +55,19 @@ function changeColor(e) {
 	}
 }
 
+let btn = document.querySelector(".btn");
+
+// Btn event Listener
+btn.addEventListener("click", btnPrompt);
+
+// Button prompt to enter number
+function btnPrompt() {
+	num = +prompt("Please enter a number between 5 and 100");
+	if (!num || num < 5 || num > 100) return;
+	document
+		.querySelector("body")
+		.removeChild(document.querySelector(".container"));
+	createSketch(num);
+}
+
 createSketch(16);
